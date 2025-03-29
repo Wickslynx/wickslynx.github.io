@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wickslynx's Portfolio</title>
     <style>
+        /* General Styles */
         body {
             font-family: 'Roboto', Arial, sans-serif;
-            background-color: #121212;
+            background: linear-gradient(135deg, #121212 50%, #1f1f1f 50%);
             color: #e0e0e0;
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         header {
@@ -69,6 +71,17 @@
             margin-bottom: 10px;
         }
 
+        /* Parallax Background */
+        .parallax {
+            background-image: url('https://via.placeholder.com/1500x500');
+            height: 500px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Project Cards Hover Effects */
         .project {
             background-color: #1f1f1f;
             padding: 15px;
@@ -79,8 +92,8 @@
         }
 
         .project:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+            transform: scale(1.05) rotate(3deg);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
         }
 
         .project h3 {
@@ -89,28 +102,13 @@
             margin-bottom: 10px;
         }
 
-        .contact-section {
-            background-color: #1f1f1f;
-            padding: 30px;
-            text-align: center;
-            margin: 40px auto;
-            max-width: 800px;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        /* Light/Dark Mode Styles */
+        .dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
         }
 
-        .contact-section h2 {
-            color: #4CAF50;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
-        .contact-section p {
-            font-size: 1.1em;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
+        /* Contact Form */
         .contact-form input, .contact-form textarea {
             width: 100%;
             padding: 15px;
@@ -125,10 +123,6 @@
 
         .contact-form input::placeholder, .contact-form textarea::placeholder {
             color: #888888;
-        }
-
-        .contact-form textarea {
-            resize: none;
         }
 
         .contact-form input:focus, .contact-form textarea:focus {
@@ -150,6 +144,7 @@
             background-color: #45a049;
         }
 
+        /* Footer */
         footer {
             text-align: center;
             padding: 20px;
@@ -161,6 +156,7 @@
             margin: 0;
         }
 
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
@@ -182,6 +178,19 @@
             .container {
                 padding: 20px;
             }
+        }
+
+        /* Social Media Links Animation */
+        .social-links a {
+            font-size: 2em;
+            color: #4CAF50;
+            margin: 0 10px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+            color: #ffffff;
         }
     </style>
 </head>
@@ -242,10 +251,28 @@
                 <button type="submit">Send Message</button>
             </form>
         </div>
+
+        <div class="social-links">
+            <a href="https://github.com" target="_blank">GitHub</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        </div>
+
+        <div class="parallax"></div>
     </div>
 
     <footer>
         <p>&copy; 2025 Wickslynx. All Rights Reserved.</p>
+        <button id="dark-mode-toggle">Toggle Dark Mode</button>
     </footer>
+
+    <script>
+        // Dark Mode Toggle Script
+        const toggleButton = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+        });
+    </script>
 </body>
 </html>
